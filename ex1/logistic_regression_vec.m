@@ -11,7 +11,10 @@ function [f,g] = logistic_regression_vec(theta, X,y)
   % initialize objective value and gradient.
   f = 0;
   g = zeros(size(theta));
-  
+
+  hyp = arrayfun(@(x) 1/(1+e^(-x)), theta'*X)';
+  f = -(y*log(hyp) + (1-y)*(1-log(hyp)));
+  g = X*(hyp - y');
 
   %
   % TODO:  Compute the logistic regression objective function and gradient 
