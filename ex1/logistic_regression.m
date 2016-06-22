@@ -13,6 +13,22 @@ function [f,g] = logistic_regression(theta, X,y)
   f = 0;
   g = zeros(size(theta));
 
+  for i=1:m
+      xval = X(:,i);
+      yval = y(i);
+      hypval = 1/(1+exp(-theta' * xval));
+      sumval = yval*log(hypval) + (1-yval)*log(1-hypval);
+      f = f - sumval;
+  endfor
+
+  for i=1:m
+      xval = X(:,i);
+      yval = y(i);
+      hypval = 1/(1+exp(-theta' * xval));
+      sumval = xval*(hypval-yval);
+      g = g + sumval;
+  endfor
+
 
   %
   % TODO:  Compute the objective function by looping over the dataset and summing
