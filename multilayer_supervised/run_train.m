@@ -41,6 +41,9 @@ options = [];
 options.display = 'iter';
 options.maxFunEvals = 1e6;
 options.Method = 'lbfgs';
+options.useMex = 0;
+
+avg_err = my_grad_check(@supervised_dnn_cost, params, {ei, data_train, labels_train},10);
 
 %% run training
 [opt_params,opt_value,exitflag,output] = minFunc(@supervised_dnn_cost,...
