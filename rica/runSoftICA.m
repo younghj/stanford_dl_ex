@@ -34,6 +34,7 @@ x = bsxfunwrap(@rdivide,patches,m);
 options.Method = 'lbfgs';
 options.MaxFunEvals = Inf;
 options.MaxIter = 500;
+options.useMex = 0;
 %options.display = 'off';
 options.outputFcn = @showBases;
 
@@ -47,4 +48,5 @@ randTheta = randTheta(:);
 
 % display result
 W = reshape(opttheta, params.numFeatures, params.n);
+figure('name', 'test');
 display_network(W');
